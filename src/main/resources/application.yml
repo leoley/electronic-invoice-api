@@ -3,20 +3,38 @@ micronaut:
     name: electronicInvoiceApi
 datasources:
   default:
-    url: jdbc:mysql://localhost:3306/db
+    url: jdbc:mysql://localhost/invoiceDB?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
     username: root
-    password: ''
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    db-type: mysql
+    password: root
+    schema-generate: CREATE_DROP
     dialect: MYSQL
+    pooled: true
+    maximum-pool-size: 10
+    minimum-idle: 5
+    maximum-idle: 5
+    initial-size: 5
+---
 redis.uri: redis://localhost
 jpa:
   default:
+    entity-scan:
+      packages: 'com.electronic.invoice.domain'
     properties:
       hibernate:
+        bytecode:
+          provider: none
         hbm2ddl:
-          auto: update
+          auto: validate
+        show_sql: false
 netty:
   default:
     allocator:
       max-order: 3
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      baseline-on-migrate: true
+      locations: classpath:db/migration

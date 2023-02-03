@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: invoiceDB
+    ports:
+      - 127.0.0.1:3306:3306
+  schema_creator:
+    image: mysql:5.6
+    depends_on:
+      - mysql
+    command: mysql --host="mysql" --user="root" --password="root" -e "create schema if not exists invoiceDB;"
+  kafka:
+    image: spotify/kafka
+    environment:
+      ADVERTISED_HOST: 127.0.0.1
+      ADVERTISED_PORT: 9092
+    ports:
+      - 9092:9092
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
