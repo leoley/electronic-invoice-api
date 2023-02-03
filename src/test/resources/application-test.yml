@@ -1,0 +1,5 @@
+datasources:
+  default:
+    url: jdbc:tc:mysql:8:///db
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+jpa.default.properties.hibernate.connection.url: jdbc:tc:mysql:8:///db

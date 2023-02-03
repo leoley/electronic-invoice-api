@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.electronic.invoice
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, data, data-jpa, gradle, hibernate-jpa, hibernate-reactive-jpa, http-client, java, java-application, jdbc-hikari, junit, kafka, logback, micronaut-build, mysql, netty-server, openapi, reactor, reactor-http-client, readme, redis-lettuce, rxjava2, rxjava2-http-client, rxjava2-http-server-netty, serialization-jackson, shade, testcontainers, yaml]

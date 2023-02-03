@@ -1,0 +1,22 @@
+micronaut:
+  application:
+    name: electronicInvoiceApi
+datasources:
+  default:
+    url: jdbc:mysql://localhost:3306/db
+    username: root
+    password: ''
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    db-type: mysql
+    dialect: MYSQL
+redis.uri: redis://localhost
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+netty:
+  default:
+    allocator:
+      max-order: 3
